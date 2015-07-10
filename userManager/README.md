@@ -12,6 +12,8 @@ Apply to knowledge after reading book about javascript, jQuery and apply lodash 
 
 `npm install gulp-ruby-sass gulp-autoprefixer gulp-minify-css gulp-jshint gulp-concat gulp-uglify gulp-imagemin gulp-notify gulp-rename gulp-livereload gulp-cache del --save-dev`
 
+`npm install --save-dev gulp-server-livereload`
+
 ### Run
 
 `gulp`
