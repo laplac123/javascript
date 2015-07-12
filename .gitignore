@@ -2,3 +2,9 @@
 *.sublime-workspace
 
 *.sublime-project
+
+**/node_modules
+
+**/dist
+
+**/.sass-cache

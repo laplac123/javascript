@@ -16,7 +16,21 @@ var gulp = require('gulp'),
 	notify = require('gulp-notify'),
 	cache = require('gulp-cache'),
 	livereload = require('gulp-livereload'),
-	del = require('del');
+	del = require('del'),
+	server = require('gulp-server-livereload'),
+	htmlmin = require('gulp-htmlmin');
+
+// HTML
+gulp.task('minify', function() {
+	return gulp.src('src/*.html')
+		.pipe(htmlmin({
+			collapseWhitespace: true
+		}))
+		.pipe(gulp.dest('dist'))
+	pipe(notify({
+		message: 'HTML task complete'
+	}))
+});
 
 // Styles
 gulp.task('styles', function() {
@@ -71,9 +85,22 @@ gulp.task('clean', function(cb) {
 	del(['dist/assets/css', 'dist/assets/js', 'dist/assets/img'], cb)
 });
 
+// Server
+gulp.task('webserver', function() {
+	gulp.src('src')
+		.pipe(server({
+			livereload: true,
+			directoryListing: true,
+			open: true
+		}))
+		.pipe(notify({
+			message: 'Server start'
+		}));
+});
+
 // Default task
 gulp.task('default', ['clean'], function() {
-	gulp.start('styles', 'scripts', 'images');
+	gulp.start('minify','styles', 'scripts', 'images', 'webserver');
 });
 
 // Watch
@@ -88,8 +115,8 @@ gulp.task('watch', function() {
 	// Watch image files
 	gulp.watch('src/images/**/*', ['images']);
 
-	// Create LiveReload server
-	livereload.listen();
+	// // Create LiveReload server
+	// livereload.listen();
 
 	// Watch any files in dist/, reload on change
 	gulp.watch(['dist/**']).on('change', livereload.changed);

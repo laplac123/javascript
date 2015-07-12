@@ -6,6 +6,8 @@ Apply to knowledge after reading book about javascript, jQuery and apply lodash 
 
 ## Run practice
 
+`npm install gulp -g`
+
 `cd /userManager`
 
 `npm install --save-dev gulp`
@@ -18,4 +20,10 @@ Apply to knowledge after reading book about javascript, jQuery and apply lodash 
 
 `gulp`
 
-Open [http://127.0.0.1:8600/index.html](http://127.0.0.1:8600/index.html)
+Open [http://127.0.0.1:8700/index.html](http://127.0.0.1:8600/index.html)
+
+
+
+
+
+
