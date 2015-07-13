@@ -22,3 +22,6 @@ sudo apt-get install ruby-full -y
 
 echo '### Install Sass'
 sudo gem install sass
+
+echo '### Install bower plugin'
+npm install -g bower
