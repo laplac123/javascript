@@ -20,7 +20,7 @@ var gulp = require('gulp'),
 gulp.task('jade', function() {
 	var YOUR_LOCALS = {};
 
-	gulp.src('src/documents/*.jade')
+	gulp.src('src/*.jade')
 		.pipe(jade({
 			locals: YOUR_LOCALS,
 			pretty: true
@@ -30,7 +30,7 @@ gulp.task('jade', function() {
 
 // Styles
 gulp.task('styles', function() {
-	return sass('src/files/styles/main.scss', {
+	return sass('src/styles/main.scss', {
 			style: 'expanded'
 		})
 		.pipe(autoprefixer('last 2 version'))
@@ -47,7 +47,7 @@ gulp.task('styles', function() {
 
 // Scripts
 gulp.task('scripts', function() {
-	return gulp.src('src/files/js/**/*.js')
+	return gulp.src('src/js/**/*.js')
 		.pipe(jshint('.jshintrc'))
 		.pipe(jshint.reporter('default'))
 		.pipe(concat('main.js'))
@@ -64,7 +64,7 @@ gulp.task('scripts', function() {
 
 // Images
 gulp.task('images', function() {
-	return gulp.src('src/files/images/**/*')
+	return gulp.src('src/images/**/*')
 		.pipe(cache(imagemin({
 			optimizationLevel: 3,
 			progressive: true,
@@ -78,19 +78,26 @@ gulp.task('images', function() {
 
 // move vendor
 gulp.task('vendor', function() {
-	gulp.src('src/files/vendor/bootstrap-sass/assets/javascripts/*.js')
+	gulp.src('src/vendor/bootstrap-sass/assets/javascripts/*.js')
 		.pipe(gulp.dest('out/vendor/bootstrap-sass/assets/javascripts/'));
-	gulp.src('src/files/vendor/jquery/dist/*')
+	gulp.src('src/vendor/jquery/dist/*')
 		.pipe(gulp.dest('out/vendor/jquery/dist/'));
-	gulp.src('src/files/vendor/html-inspector/*.js')
+	gulp.src('src/vendor/html-inspector/*.js')
 		.pipe(gulp.dest('out/vendor/html-inspector/'));
-	gulp.src('src/files/vendor/lodash/*.js')
+	gulp.src('src/vendor/lodash/*.js')
 		.pipe(gulp.dest('out/vendor/lodash/'));
+	gulp.src('src/vendor/bootstrap-sass/assets/fonts/**/*')
+	.pipe(gulp.dest('out/fonts/'));
 });
 
 // Clean
 gulp.task('clean', function(cb) {
-	del(['out/assets/css', 'out/assets/js', 'out/assets/img'], cb)
+	del(['out'], cb)
+});
+
+//Clear cache
+gulp.task('clear', function (done) {
+  return cache.clearAll(done);
 });
 
 // Server
@@ -112,6 +119,7 @@ gulp.task('serve', [], function() {
 // Default task
 gulp.task('default', ['clean'], function() {
 	gulp.start(
+		'clear',
 		'jade',
 		'styles',
 		'scripts',
@@ -125,16 +133,16 @@ gulp.task('default', ['clean'], function() {
 gulp.task('watch', function() {
 
 	// Watch .scss files
-	gulp.watch('src/files/styles/**/*.scss', ['styles']);
+	gulp.watch('src/styles/**/*.scss', ['styles']);
 
 	// Watch .js files
-	gulp.watch('src/files/js/**/*.js', ['scripts']);
+	gulp.watch('src/js/**/*.js', ['scripts']);
 
 	// Watch image files
-	gulp.watch('src/files/images/**/*', ['images']);
+	gulp.watch('src/images/**/*', ['images']);
 
 	// Watch jade files
-	gulp.watch('src/documents/*', ['jade']);
+	gulp.watch('src/*', ['jade']);
 	gulp.watch('src/layouts/*', ['jade']);
 
 	// Create LiveReload server

@@ -1,6 +1,7 @@
 {
   "name": "userManager",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Manage libraries for USER MANAGER project",
   "moduleType": [
     "node"
   ],
@@ -9,13 +10,13 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "src/files/vendor",
+    "src/vendor",
     "test",
     "tests"
   ],
   "dependencies": {
-    "html-inspector": "~0.8.2",
     "bootstrap-sass": "~3.3.5",
+    "html-inspector": "~0.8.2",
     "lodash": "~3.10.0"
   }
 }

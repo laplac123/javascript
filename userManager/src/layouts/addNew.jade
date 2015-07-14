@@ -1,0 +1,32 @@
+form.form-horizontal.addNew
+	.form-group
+		label(for="input-fisrtName").control-label.col-xs-3 First Name
+		.col-xs-6
+			input(type="text", id="first-name", placeholder="Input First Name Here", required).form-control
+	.form-group
+		label(for="input-lateName").control-label.col-xs-3 Last Name
+		.col-xs-6
+			input(type="text", id="late-name", placeholder="Input Last Name Here", required).form-control
+	.form-group
+		label(for="input-address").control-label.col-xs-3 Address
+		.col-xs-6
+			input(type="text", id="address", placeholder="Input Address Here", required).form-control
+	.form-group
+		label(for="input-email").control-label.col-xs-3 Email
+		.col-xs-6
+			input(type="email", id="email", placeholder="Input Email Address Here", required).form-control
+	.form-group
+		label(for="input-phone").control-label.col-xs-3 Phone Number
+		.col-xs-6
+			input(type="tel", id="phoneNumber", placeholder="Input Phone Number Here", required).form-control
+	.form-group
+		.col-xs-offset-3.col-xs-6
+			.row
+				.col-xs-6
+					button(type="submit").btn.btn-default.addNew-btn.pull-right
+						span.glyphicon.glyphicon-ok
+						|  Add
+				.col-xs-6
+					button(type="button").btn.btn-default.addNew-btn
+						span.glyphicon.glyphicon-remove
+						|  Cancel
