@@ -1,15 +1,20 @@
-
 var Application = Application || {};
 
-(function(App){
+(function(App) {
 	'use strict';
 
-	function appView(){
+	function AppView() {
 
 	}
 
+	AppView.prototype.appDisplay = function(userData) {
+		var userView;
+		for (var i = 0; i < userData.length; i++) {
+			userView = new Application.UserView(userData[i].userId, userData[i].userInfor);
+			userView.addUserView();
+		};
+	}
 
-
-	App.appView = appView;
+	App.AppView = AppView;
 
 }(Application));

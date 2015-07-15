@@ -14,7 +14,23 @@ var Application = Application || {};
 	 * param {Number} amount
 	 */
 	AppModel.prototype.generateUserData = function(amount) {
-		
+		var app = new AppModel(),
+			userData = app.getDataSaved();
+		if (!userData) {
+			userData = _.range(amount).map(function(value) {
+				return {
+					userId: ++value,
+					userInfor: {
+						firstName: faker.name.firstName(),
+						lastName: faker.name.lastName(),
+						address: faker.address.streetAddress(),
+						email: faker.internet.email(),
+						phoneNumber: faker.phone.phoneNumber()
+					}
+				};
+			});
+			app.saveData(userData);
+		}
 	}
 
 	/**
@@ -25,7 +41,11 @@ var Application = Application || {};
 		return JSON.parse(localStorage.getItem('userManagerData'));
 	}
 
-
+	/**
+	 * save user data into local Storage
+	 * @param  {array} data 
+	 * @return {string} localStorage
+	 */
 	AppModel.prototype.saveData = function(data) {
 		localStorage.setItem('userManagerData', JSON.stringify(data));
 	}

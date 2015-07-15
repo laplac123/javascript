@@ -79,15 +79,17 @@ gulp.task('images', function() {
 // move vendor
 gulp.task('vendor', function() {
 	gulp.src('src/vendor/bootstrap-sass/assets/javascripts/*.js')
-		.pipe(gulp.dest('out/vendor/bootstrap-sass/assets/javascripts/'));
+		.pipe(gulp.dest('out/vendor/bootstrap-sass/'));
 	gulp.src('src/vendor/jquery/dist/*')
-		.pipe(gulp.dest('out/vendor/jquery/dist/'));
+		.pipe(gulp.dest('out/vendor/jquery/'));
 	gulp.src('src/vendor/html-inspector/*.js')
 		.pipe(gulp.dest('out/vendor/html-inspector/'));
 	gulp.src('src/vendor/lodash/*.js')
 		.pipe(gulp.dest('out/vendor/lodash/'));
 	gulp.src('src/vendor/bootstrap-sass/assets/fonts/**/*')
 	.pipe(gulp.dest('out/fonts/'));
+	gulp.src('src/vendor/Faker/build/build/*.js')
+		.pipe(gulp.dest('out/vendor/Faker/'));
 });
 
 // Clean
