@@ -1,9 +1,5 @@
 {
-  "name": "userManager",
-  "version": "1.0.0",
-  "description": "Manage plugin using in project",
-  "main": "gulpfile.js",
-  "dependencies": {
+  "devDependencies": {
     "browser-sync": "^2.7.13",
     "del": "^1.2.0",
     "gulp": "^3.9.0",
@@ -20,11 +16,5 @@
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^1.0.5",
     "gulp-uglify": "^1.2.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+  }
 }
