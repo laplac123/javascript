@@ -16,14 +16,18 @@ var Application = Application || {};
 	AppModel.prototype.generateUserData = function(amount) {
 		var app = new AppModel(),
 			userData = app.getDataSaved();
-		if (!userData) {
+		if (!userData || userData.length == 0) {
 			userData = _.range(amount).map(function(value) {
 				return {
 					userId: ++value,
 					userInfor: {
 						firstName: faker.name.firstName(),
 						lastName: faker.name.lastName(),
-						address: faker.address.streetAddress(),
+						address: faker.address.streetAddress()
+										+ ', '
+										+ faker.address.city()
+										+ ' City, '
+										+ faker.address.country(),
 						email: faker.internet.email(),
 						phoneNumber: faker.phone.phoneNumber()
 					}

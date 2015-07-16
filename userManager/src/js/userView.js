@@ -15,16 +15,17 @@ var Application = Application || {};
 	 * add user into User List
 	 */
 	UserView.prototype.addUserView = function() {
-		var userInfor = this.userInfor;
+		var userInfor = this.userInfor,
+			$itemList = $('#userList tr:first-child').clone(true).removeClass('hidden').removeAttr('id');
 
-		$('#userList').append('include itemList.jade');
-		$('tr').attr('data-id', this.userId);
-		$('#userId').text(this.userId);
-		$('#firstName').text(userInfor.firstName);
-		$('#lastName').text(userInfor.lastName);
-		$('#address').text(userInfor.address);
-		$('#email').text(userInfor.email);
-		$('#phoneNumber').text(userInfor.phoneNumber);
+		$('#userList').append($itemList);
+		$('tr:nth-child(' + $('#userList').children().length + ')').attr('data-id', this.userId);
+		$('tr[data-id=' + this.userId + '] .userId').text(this.userId);
+		$('tr[data-id=' + this.userId + '] .firstName').text(userInfor.firstName);
+		$('tr[data-id=' + this.userId + '] .lastName').text(userInfor.lastName);
+		$('tr[data-id=' + this.userId + '] .address').text(userInfor.address);
+		$('tr[data-id=' + this.userId + '] .email').text(userInfor.email);
+		$('tr[data-id=' + this.userId + '] .phoneNumber').text(userInfor.phoneNumber);
 	}
 
 	/**
@@ -40,15 +41,27 @@ var Application = Application || {};
 		$('#input-email').val(userInfor.email);
 		$('#input-phoneNumber').val(userInfor.phoneNumber);
 
-		$('#addBtn').addClass('disabled');
-		$('#editBtn').removeClass('disabled');
+		$('#addBtn').addClass('hidden');
+		$('#editBtn').removeClass('hidden');
+	}
+
+	UserView.prototype.cancelUserView = function() {
+		$('#input-userId').text('');
+		$('#input-firstName').val('');
+		$('#input-lastName').val('');
+		$('#input-address').val('');
+		$('#input-email').val('');
+		$('#input-phoneNumber').val('');
+
+		$('#addBtn').removeClass('hidden');
+		$('#editBtn').addClass('hidden');
 	}
 
 	/**
 	 * delete userInfor from User List
 	 */
 	UserView.prototype.delUserView = function(userId) {
-		var $delUser = $('userList').find("[data-id='" + userId + "']");
+		var $delUser = $('#userList').find("[data-id='" + userId + "']");
 
 		$delUser.remove();
 	}

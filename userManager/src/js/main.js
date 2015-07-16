@@ -5,12 +5,13 @@ $(document).ready(function() {
 
 	var app = new Application.AppControl();
 
-	app.appStart();
+	app.appStart(50);
+	app.searchFirstName();
 
 	var userControl = new Application.UserControl();
 
 	userControl.addUser();
 	userControl.editUser();
+	userControl.cancelUser();
 	userControl.delUser();
-	userControl.infoUser();
 });

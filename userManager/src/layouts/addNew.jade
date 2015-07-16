@@ -3,11 +3,11 @@ form.form-horizontal.addNew
 	.form-group
 		label(for="input-fisrtName").control-label.col-xs-3 First Name
 		.col-xs-6
-			input(type="text", id="input-fisrtName", placeholder="Input First Name Here", required).form-control
+			input(type="text", id="input-firstName", placeholder="Input First Name Here", required).form-control
 	.form-group
 		label(for="input-lateName").control-label.col-xs-3 Last Name
 		.col-xs-6
-			input(type="text", id="input-lateName", placeholder="Input Last Name Here", required).form-control
+			input(type="text", id="input-lastName", placeholder="Input Last Name Here", required).form-control
 	.form-group
 		label(for="input-address").control-label.col-xs-3 Address
 		.col-xs-6
@@ -21,17 +21,13 @@ form.form-horizontal.addNew
 		.col-xs-6
 			input(type="tel", id="input-phoneNumber", placeholder="Input Phone Number Here", required).form-control
 	.form-group
-		.col-xs-offset-3.col-xs-6
-			.row
-				.col-xs-4.text-center
+		.col-xs-offset-3.col-xs-6.text-right
 					button(type="submit").btn.btn-default#addBtn
 						span.glyphicon.glyphicon-ok
 						|  Add
-				.col-xs-4.text-center
-					button(type="button").btn.btn-default#editBtn.disabled
+					button(type="button").btn.btn-default#editBtn.hidden
 						span.glyphicon.glyphicon-edit
 						|  Edit
-				.col-xs-4.text-center
 					button(type="button").btn.btn-default#cancelBtn
 						span.glyphicon.glyphicon-remove
 						|  Cancel

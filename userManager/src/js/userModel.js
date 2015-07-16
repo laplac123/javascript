@@ -14,9 +14,9 @@ var Application = Application || {};
 	 * Add user to local storage
 	 */
 	UserModel.prototype.addUserData = function() {
-		var app = new App.AppModule(),
+		var app = new App.AppModel(),
 			storage = app.getDataSaved(),
-			newUser = new UserModel(this.userID, this.userInfor);
+			newUser = new UserModel(this.userId, this.userInfor);
 
 		storage.push(newUser);
 		app.saveData(storage);
@@ -27,17 +27,18 @@ var Application = Application || {};
 	 * @return {array} local Storage
 	 */
 	UserModel.prototype.editUserData = function() {
-		var app = new App.AppModule(),
+		var app = new App.AppModel(),
 			storage = app.getDataSaved();
 
 		for (var i = 0; i < storage.length; i++) {
 
 			var userIdGet = storage[i].userId;
 
-			if (userIdGet === this.userId) {
+			if (userIdGet == this.userId) {
 				storage[i].userInfor = this.userInfor;
 
 				app.saveData(storage);
+				break;
 			}
 		}
 	}
@@ -47,12 +48,13 @@ var Application = Application || {};
 	 * @return {array} local Storage
 	 */
 	UserModel.prototype.delUserData = function(userId) {
-		var app = new App.AppModule(),
+		var app = new App.AppModel(),
 			storage = app.getDataSaved(),
 			index = _.findIndex(storage, function(chr) {
-				return chr.userId === userId;
+				return chr.userId == userId;
 			});
 		_.pullAt(storage, index);
+		app.saveData(storage);
 	}
 
 	App.UserModel = UserModel;

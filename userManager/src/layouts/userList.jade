@@ -1,25 +1,26 @@
 .userList
-		h2
-			span.glyphicon.glyphicon-user
-			|  List User
-	.searchbar
-		form.form-horizontal
-			.form-group
-				label(for="input-searchName").control-label.col-xs-2 Search:
-				.col-xs-7
-					input(type="text", id="searchName").form-control
-				.col-xs-3
-					button(type="button").btn.btn-default
-						span.glyphicon.glyphicon-search
-	.table-responsive
-		table.table.table-bordered.table-striped.table-hover.table-condensed
-			thead
-				tr
-					th Id
-					th First Name
-					th Last Name
-					th Address
-					th Email
-					th Phone Number
-					th
-			tbody#userList
+	h2
+		span.glyphicon.glyphicon-user
+		|  List User
+.searchbar
+	form.form-horizontal
+		.form-group
+			label(for="input-searchName").control-label.col-xs-2 Search:
+			.col-xs-7
+				input(type="text").form-control#searchText
+			.col-xs-3
+				button(type="button").btn.btn-default#searchBtn
+					span.glyphicon.glyphicon-search
+.table-responsive
+	table.table.table-bordered.table-striped.table-hover.table-condensed
+		thead
+			tr
+				th Id
+				th First Name
+				th Last Name
+				th Address
+				th Email
+				th Phone Number
+				th
+		tbody#userList
+			include itemList.jade
