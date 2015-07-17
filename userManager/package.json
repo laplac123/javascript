@@ -1,4 +1,13 @@
 {
+  "name": "userManager",
+  "version": "1.0.0",
+  "description": "Manager plugin of gulp",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TriHo",
+  "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.7.13",
     "del": "^1.2.0",
